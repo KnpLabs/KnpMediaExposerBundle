@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- PHP Templating Helper -->
+        <service id="templating.helper.media_exposer" class="Knplabs\Bundle\MediaExposerBundle\Helper\MediaExposerHelper" public="false">
+            <tag name="templating.helper" alias="media_exposer" />
+            <argument type="service" id="media_exposer" />
+        </service>
+        <!-- Twig Templating Extension -->
+        <service id="twig.extension.media_exposer" class="Knplabs\Bundle\MediaExposerBundle\Twig\MediaExposerExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="media_exposer" />
+        </service>
+    </services>
+
+</container>
