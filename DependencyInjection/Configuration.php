@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\DependencyInjection;
+namespace Knp\Bundle\MediaExposerBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Listener;
+namespace Knp\Bundle\MediaExposerBundle\Listener;
 
 /**
  * Listener responsible of injecting the base url computed from the request

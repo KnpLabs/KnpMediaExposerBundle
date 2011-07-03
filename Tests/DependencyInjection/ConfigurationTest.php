@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Tests\DependencyInjection;
+namespace Knp\Bundle\MediaExposerBundle\Tests\DependencyInjection;
 
-use Knplabs\Bundle\MediaExposerBundle\DependencyInjection\Configuration;
+use Knp\Bundle\MediaExposerBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase

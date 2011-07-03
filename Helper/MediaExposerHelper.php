@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Helper;
+namespace Knp\Bundle\MediaExposerBundle\Helper;
 
 use Symfony\Component\Console\Helper\Helper;
 use MediaExposer\Exposer;

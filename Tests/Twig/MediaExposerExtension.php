@@ -1,8 +1,8 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Tests\Twig;
+namespace Knp\Bundle\MediaExposerBundle\Tests\Twig;
 
-use Knplabs\Bundle\MediaExposerBundle\Twig\MediaExposerExtension;
+use Knp\Bundle\MediaExposerBundle\Twig\MediaExposerExtension;
 
 class MediaExposerHelperTest extends \PHPUnit_Framework_TestCase
 {

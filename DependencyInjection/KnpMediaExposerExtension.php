@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\DependencyInjection;
+namespace Knp\Bundle\MediaExposerBundle\DependencyInjection;
 
 
 /**
@@ -8,7 +8,7 @@ namespace Knplabs\Bundle\MediaExposerBundle\DependencyInjection;
  *
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class MediaExposerExtension extends Extension
+class KnpMediaExposerExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

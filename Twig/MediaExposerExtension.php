@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Twig;
+namespace Knp\Bundle\MediaExposerBundle\Twig;
 
 use MediaExposer\Exposer;
 use Twig_Extension;

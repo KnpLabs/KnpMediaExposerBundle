@@ -1,10 +1,10 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Tests\Listener;
+namespace Knp\Bundle\MediaExposerBundle\Tests\Listener;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Knplabs\Bundle\MediaExposerBundle\Listener\BaseUrlListener;
+use Knp\Bundle\MediaExposerBundle\Listener\BaseUrlListener;
 
 class BaseUrlListenerTest extends \PHPUnit_Framework_TestCase
 {

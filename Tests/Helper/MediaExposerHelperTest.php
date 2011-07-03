@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\MediaExposerBundle\Tests\Helper;
+namespace Knp\Bundle\MediaExposerBundle\Tests\Helper;
 
 class MediaExposerHelperTest extends \PHPUnit_Framework_TestCase
 {
