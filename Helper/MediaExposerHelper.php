@@ -2,7 +2,7 @@
 
 namespace Knp\Bundle\MediaExposerBundle\Helper;
 
-use Symfony\Component\Console\Helper\Helper;
+use Symfony\Component\Templating\Helper\Helper;
 use MediaExposer\Exposer;
 
 /**
@@ -42,5 +42,13 @@ class MediaExposerHelper extends Helper
     public function getPath($media, array $options = array())
     {
         return $this->exposer->getPath($media, $options);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+        return 'media_exposer';
     }
 }

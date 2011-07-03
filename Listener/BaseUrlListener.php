@@ -2,6 +2,10 @@
 
 namespace Knp\Bundle\MediaExposerBundle\Listener;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use MediaExposer\Exposer;
+
 /**
  * Listener responsible of injecting the base url computed from the request
  * to the media exposer.
@@ -40,17 +44,11 @@ class BaseUrlListener
      * @param  Request $request
      *
      * @return string
+     *
+     * @todo improve this method
      */
     private function computeBaseUrl(Request $request)
     {
-        $baseUrl = $request->getBaseUrl();
-        $script  = $request->getScriptName();
-
-        // remove script name if it is in the base path
-        if ($script = substr($baseUrl, 1, 1 + strlen($script))) {
-            $baseUrl = substr($baseUrl, 1, strlen($baseUrl) - strlen($script) - 1);
-        }
-
-        return $request->getScheme() . '://' . $request->getHttpHost() . $baseUrl;
+        return $request->getScheme() . '://' . $request->getHttpHost();
     }
 }

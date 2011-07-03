@@ -6,12 +6,12 @@
 
     <services>
         <!-- PHP Templating Helper -->
-        <service id="templating.helper.media_exposer" class="Knp\Bundle\MediaExposerBundle\Helper\MediaExposerHelper" public="false">
+        <service id="templating.helper.media_exposer" class="Knp\Bundle\MediaExposerBundle\Helper\MediaExposerHelper">
             <tag name="templating.helper" alias="media_exposer" />
             <argument type="service" id="media_exposer" />
         </service>
         <!-- Twig Templating Extension -->
-        <service id="twig.extension.media_exposer" class="Knp\Bundle\MediaExposerBundle\Twig\MediaExposerExtension" public="false">
+        <service id="twig.extension.media_exposer" class="Knp\Bundle\MediaExposerBundle\Twig\MediaExposerExtension">
             <tag name="twig.extension" />
             <argument type="service" id="media_exposer" />
         </service>

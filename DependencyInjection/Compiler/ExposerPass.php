@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\Bundle\MediaExposerBundle\DependencyInjection;
+namespace Knp\Bundle\MediaExposerBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

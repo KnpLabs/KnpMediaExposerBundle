@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('knplabs_media_exposer');
         $rootNode
             ->children()
-                ->scalarNode('base_url')
+                ->scalarNode('base_url')->defaultNull()->end()
             ->end()
         ;
 

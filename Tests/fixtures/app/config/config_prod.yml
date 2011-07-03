@@ -1,0 +1,28 @@
+services:
+    foo:
+        class:      'MediaExposer\Resolver\StubPath'
+        arguments:  ['/the/path']
+        tags:
+            - { name: media_exposer.resolver, priority: -10 }
+
+    bar:
+        class:      'MediaExposer\Resolver\StubPath'
+        arguments:  ['/the/path']
+        tags:
+            - { name: media_exposer.resolver }
+
+    baz:
+        class:      'MediaExposer\Resolver\StubPath'
+        arguments:  ['/the/path']
+        tags:
+            - { name: media_exposer.resolver, priority: 10 }
+
+framework:
+    secret:          SomeSecret
+    charset:         UTF-8
+    templating:      { engines: ['twig', 'php'] }
+    router:          { resource: '%kernel.root_dir%/config/routing.yml' }
+
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%

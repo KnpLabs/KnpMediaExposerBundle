@@ -1,0 +1,22 @@
+<?php
+
+require_once $_SERVER['SYMFONY'].'/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+
+use Symfony\Component\ClassLoader\UniversalClassLoader;
+
+$loader = new UniversalClassLoader();
+$loader->registerNamespaces(array(
+    'Symfony'                       => $_SERVER['SYMFONY'],
+    'MediaExposer'                  => $_SERVER['MEDIA_EXPOSER'],
+));
+$loader->registerPrefixes(array(
+    'Twig_'                         => $_SERVER['TWIG'],
+));
+$loader->register();
+
+spl_autoload_register(function($class) {
+    if (0 === strpos($class, 'Knp\\Bundle\\MediaExposerBundle\\')) {
+        require_once __DIR__.'/../'.implode('/', array_slice(explode('\\', $class), 3)).'.php';
+        return true;
+    }
+});

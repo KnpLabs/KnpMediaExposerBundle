@@ -2,6 +2,8 @@
 
 namespace Knp\Bundle\MediaExposerBundle\Tests\Helper;
 
+use Knp\Bundle\MediaExposerBundle\Helper\MediaExposerHelper;
+
 class MediaExposerHelperTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetSource()
@@ -39,7 +41,7 @@ class MediaExposerHelperTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'THE_PATH',
-            $helper->getSource('THE_MEDIA', array('foo' => 'bar')),
+            $helper->getPath('THE_MEDIA', array('foo' => 'bar')),
             'The ->getPath() method of the helper is a proxy to the exposer\'s one.'
         );
     }
