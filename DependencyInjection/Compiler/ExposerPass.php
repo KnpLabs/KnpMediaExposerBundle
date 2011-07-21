@@ -25,7 +25,7 @@ class ExposerPass implements CompilerPassInterface
         }
 
         $definition = $container->getDefinition('media_exposer');
-        foreach ($container->findTaggedServiceIds('media_exposer.resolver') as $id => $tag) {
+        foreach ($container->findTaggedServiceIds('knp_media_exposer.resolver') as $id => $tag) {
             $definition->addMethodCall(
                 'addResolver',
                 array(

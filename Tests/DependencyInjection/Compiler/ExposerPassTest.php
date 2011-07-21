@@ -28,7 +28,7 @@ class ExposerPassTest extends \PHPUnit_Framework_TestCase
         $container
             ->expects($this->any())
             ->method('findTaggedServiceIds')
-            ->with($this->equalTo('media_exposer.resolver'))
+            ->with($this->equalTo('knp_media_exposer.resolver'))
             ->will($this->returnValue(array(
                 'foo' => array(),
                 'bar' => array('priority' => 10)

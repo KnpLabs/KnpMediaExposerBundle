@@ -3,19 +3,19 @@ services:
         class:      'MediaExposer\Resolver\StubPath'
         arguments:  ['/the/path']
         tags:
-            - { name: media_exposer.resolver, priority: -10 }
+            - { name: knp_media_exposer.resolver, priority: -10 }
 
     bar:
         class:      'MediaExposer\Resolver\StubPath'
         arguments:  ['/the/path']
         tags:
-            - { name: media_exposer.resolver }
+            - { name: knp_media_exposer.resolver }
 
     baz:
         class:      'MediaExposer\Resolver\StubPath'
         arguments:  ['/the/path']
         tags:
-            - { name: media_exposer.resolver, priority: 10 }
+            - { name: knp_media_exposer.resolver, priority: 10 }
 
 framework:
     secret:          SomeSecret
