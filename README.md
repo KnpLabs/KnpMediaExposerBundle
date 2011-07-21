@@ -56,7 +56,7 @@ By default, the host of the request will be used, but you can also specify it in
 
     # app/config/config.yml
 
-    knplabs_media_exposer:
+    knp_media_exposer:
         base_url:   'http://the-base.url'
 
 Registering Resolvers
@@ -72,7 +72,7 @@ Here is an exemple of resolver service registration in **yml**:
         foo.bar_resolver:
             class:  'Foo\BarResolver'
             tags:
-                - { name: 'media_exposer.resolver' }
+                - { name: 'knp_media_exposer.resolver' }
 
 An optional `priority` can also be specified:
 
@@ -80,9 +80,9 @@ An optional `priority` can also be specified:
         foo.bar_resolver:
             class:  'Foo\BarResolver'
             tags:
-                - { name: 'media_exposer.resolver', priority: 10 }
+                - { name: 'knp_media_exposer.resolver', priority: 10 }
 
-**Note:** Don't forget that the lowest priority is the first and the highest is the last.
+**Note:** Don't forget that the highest priority is the first and the lowest is the last.
 
 Usage
 -----
