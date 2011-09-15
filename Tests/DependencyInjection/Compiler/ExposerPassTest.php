@@ -31,7 +31,9 @@ class ExposerPassTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo('knp_media_exposer.resolver'))
             ->will($this->returnValue(array(
                 'foo' => array(),
-                'bar' => array('priority' => 10)
+                'bar' => array(
+                    array('priority' => 10)
+                )
             )))
         ;
 
