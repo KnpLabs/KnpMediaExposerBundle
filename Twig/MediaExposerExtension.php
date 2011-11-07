@@ -32,8 +32,10 @@ class MediaExposerExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            'media_source'  => new Twig_Filter_Method($this, 'getSource'),
-            'media_path'    => new Twig_Filter_Method($this, 'getPath')
+            'media_has_source'  => new Twig_Filter_Method($this, 'hasSource'),
+            'media_source'      => new Twig_Filter_Method($this, 'getSource'),
+            'media_has_path'    => new Twig_Filter_Method($this, 'hasPath'),
+            'media_path'        => new Twig_Filter_Method($this, 'getPath')
         );
     }
 
@@ -43,9 +45,21 @@ class MediaExposerExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            'media_source'  => new Twig_Function_Method($this, 'getSource'),
-            'media_path'    => new Twig_Function_Method($this, 'getPath')
+            'media_has_source'  => new Twig_Function_Method($this, 'hasSource'),
+            'media_source'      => new Twig_Function_Method($this, 'getSource'),
+            'media_has_path'    => new Twig_Function_Method($this, 'hasPath'),
+            'media_path'        => new Twig_Function_Method($this, 'getPath')
         );
+    }
+
+    /**
+     * Proxy for the method of the exposer
+     *
+     * @see Exposer::hasSource()
+     */
+    public function hasSource($media, array $options = array())
+    {
+        return $this->exposer->hasSource($media, $options);
     }
 
     /**
@@ -61,7 +75,17 @@ class MediaExposerExtension extends Twig_Extension
     /**
      * Proxy for the method of the exposer
      *
-     * @see Exposer::getSource()
+     * @see Exposer::hasPath()
+     */
+    public function hasPath($media, array $options = array())
+    {
+        return $this->exposer->hasPath($media, $options);
+    }
+
+    /**
+     * Proxy for the method of the exposer
+     *
+     * @see Exposer::getPath()
      */
     public function getPath($media, array $options = array())
     {

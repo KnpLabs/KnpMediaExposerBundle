@@ -27,6 +27,16 @@ class MediaExposerHelper extends Helper
     /**
      * Proxy for the method of the exposer
      *
+     * @see Exposer::hasSource()
+     */
+    public function hasSource($media, array $options = array())
+    {
+        return $this->exposer->hasSource($media, $options);
+    }
+
+    /**
+     * Proxy for the method of the exposer
+     *
      * @see Exposer::getSource()
      */
     public function getSource($media, array $options = array(), $forceAbsolute = false)
@@ -37,7 +47,17 @@ class MediaExposerHelper extends Helper
     /**
      * Proxy for the method of the exposer
      *
-     * @see Exposer::getSource()
+     * @see Exposer::hasPath()
+     */
+    public function hasPath($media, array $options = array())
+    {
+        return $this->exposer->hasPath($media, $options);
+    }
+
+    /**
+     * Proxy for the method of the exposer
+     *
+     * @see Exposer::getPath()
      */
     public function getPath($media, array $options = array())
     {
