@@ -1,131 +1,214 @@
 KnpMediaExposerBundle
 =====================
 
-The KnpMediaExposerBundle provides a simple integration of the [MediaExposer][media-exposer] library for your Symfony project.
+The KnpMediaExposerBundle provides a simple integration of the [MediaExposer][media-exposer]
+library for your Symfony project.
 
 The MediaExposer Library
 ------------------------
 
-The [MediaExposer][media-exposer] library allows you to easily expose you medias to the users of your application by computing their urls or paths.
+The [MediaExposer][media-exposer] library allows you to easily expose you
+medias to the users of your application by computing their urls or paths.
 
 You can find more informations on the [official page][media-exposer].
 
 Installation
 ------------
 
-The bundle depends on the [MediaExposer][media-exposer] library, so you need to copy it under the `vendor/media-exposer` directory of your Symfony project.
+The bundle depends on the [MediaExposer][media-exposer] library, so you
+need to copy it under the `vendor/media-exposer` directory of your Symfony
+project.
 
-You also must copy the sources of the bundle itself under the `vendor/bundle/Knp/Bundle/MediaExposerBundle` directory.
+### Grab the sources
 
-**Note:** The specified directories are not mandatory but it is strongly recommended to respect them as they follow the convention of the [Symfony Standard Edition][symfony-standard].
+#### Using the `deps` file
 
-If you are using git, you can add both as submodules of your repository:
+You can add the following lines to your `deps` file:
 
-    $ git submodule add https://github.com/knplabs/MediaExposer.git vendor/media-exposer
-    $ git submodule add https://github.com/knplabs/KnpMediaExposerBundle.git vendor/bundle/Knp/Bundle/MediaExposerBundle
+```ini
+[media-exposer]
+    git=http://github.com/knplabs/MediaExposer.git
 
-Then, you must register them to the autoloader:
+[KnpMediaExposerBundle]
+    git=http://github.com/knplabs/KnpMediaExposerBundle.git
+    target=/bundles/Knp/Bundle/MediaExposerBundle
+```
 
-    <?php // app/autoload.php
+And run the command:
 
-    $loader->registerNamespaces(array(
-        // ... other namespaces
-        'Knp\\Bundle'   => __DIR__.'/vendor/bundle',
-        MediaExposer'   => __DIR__.'/vendor/media-exposer/src'
-    ));
+```bash
+./bin/vendors install
+```
 
+#### Using git submodules
+
+You can run the following git commands to add both library and bundle as
+submodules:
+
+```bash
+git submodule add https://github.com/knplabs/MediaExposer.git vendor/media-exposer
+git submodule add https://github.com/knplabs/KnpMediaExposerBundle.git vendor/bundle/Knp/Bundle/MediaExposerBundle
+```
+
+### Update your autoloader & kernel
+
+Once you have copied the sources in your project, you must update your
+autoloader:
+
+```php
+<?php // app/autoload.php
+
+$loader->registerNamespaces(array(
+    // ... other namespaces
+    'Knp\\Bundle'   => __DIR__.'/vendor/bundles',
+    'MediaExposer'  => __DIR__.'/vendor/media-exposer/src'
+));
+```
 Finally, register the bundle to your kernel:
 
-    <?php // app/AppKernel.php
+```php
+<?php // app/AppKernel.php
 
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ... the other bundles
-            new Knp\Bundle\MediaExposerBundle\KnpMediaExposerBundle()
-        );
-    }
+public function registerBundles()
+{
+    $bundles = array(
+        // ... the other bundles
+        new Knp\Bundle\MediaExposerBundle\KnpMediaExposerBundle()
+    );
+}
+```
 
 You can now proceed to the configuration.
 
 Configuration
 -------------
 
-To "absolutify" urls, the media exposer needs a base url that will be prepended to the relatives sources.
-By default, the host of the request will be used, but you can also specify it in your configuration:
+To "absolutify" urls, the media exposer needs a base url that will be prepended
+to the relatives sources. By default, the host of the request will be used,
+but you can also specify it in your configuration:
 
-    # app/config/config.yml
+```yaml
+# app/config/config.yml
 
-    knp_media_exposer:
-        base_url:   'http://the-base.url'
+knp_media_exposer:
+    base_url:   'http://the-base.url'
+```
 
 Registering Resolvers
 ---------------------
 
-After the installation & configuration, the media exposer is almost ready for use.
-But there is still one step: registering your resolvers.
+After the installation & configuration, the media exposer is almost ready
+for use. But there is still one step: registering your resolvers.
 
-The registration of a resolver is done by defining a service with the "media\_exposer.resolver" tag.
+With this bundle, adding a resolver to the exposer is as simple as registering
+a service having the `media\_exposer.resolver` tag.
+
 Here is an exemple of resolver service registration in **yml**:
 
-    services:
-        foo.bar_resolver:
-            class:  'Foo\BarResolver'
-            tags:
-                - { name: 'knp_media_exposer.resolver' }
+```yaml
+services:
+    foo.bar_resolver:
+        class:  'Foo\BarResolver'
+        tags:
+            - { name: 'knp_media_exposer.resolver' }
+```
 
 An optional `priority` can also be specified:
 
-    services:
-        foo.bar_resolver:
-            class:  'Foo\BarResolver'
-            tags:
-                - { name: 'knp_media_exposer.resolver', priority: 10 }
+```yaml
+services:
+    foo.bar_resolver:
+        class:  'Foo\BarResolver'
+        tags:
+            - { name: 'knp_media_exposer.resolver', priority: 10 }
+```
 
 **Note:** Don't forget that the highest priority is the first and the lowest is the last.
 
 Usage
 -----
 
-### In a controller
+### Twig integration
 
-The bundle will add the **media_exposer** service to the container, so you can access it in your controller with the `->get()` method.
+The bundle registers a Twig extension adding the necessary to use the `Exposer`
+in your templates.
 
-    <?php
+#### The `media_has_source` function
 
-    class FooController extends Controller
-    {
-        public function barAction()
-        {
-            // ...
+The `media_has_source` function indicates whether the resolver can return
+a source for the given media:
 
-            $exposer = $this->get('media_exposer');
+```twig
+{{ media_has_source(picture) }}
+```
 
-            $path = $exposer->getPath($media);
-            $source = $exposer->getSource($media);
-        }
-    }
+You can pass a hash of options as second argument:
 
-### In a template
+```twig
+{{ media_has_source(picture, {'foo':'bar'}) }}
+```
 
-The bundle also add an extension to both the Twig & PHP templating engines.
+#### The `media_source` function
 
-In a Twig template:
+The `media_source` function returns the source for the given media:
 
-    {# using the filters #}
-    <img src="{{ article|media_source }}" alt="" />
-    <img src="{{ article|media_path }}" alt="" />
+```twig
+{{ media_source(picture) }}
+```
 
-    {# using the functions #}
-    <img src="{{ media_source(article) }}" alt="" />
-    <img src="{{ media_path(article) }}" alt="" />
+You can specify an options hash as second argument:
 
-In a PHP template:
+```twig
+{{ media_source(picture, {'foo':'bar'}) }}
+```
 
-    <img src="<?php echo $view['media_exposer']->getSource($article); ?>" alt="" />
-    <img src="<?php echo $view['media_exposer']->getPath($article); ?>" alt="" />
+If you want the `Exposer` to generate absolute sources (URLs), you can force
+it passing `true` as third argument:
 
-**Note:** The source means a relative or absolute url and the path means a full file path.
+```twig
+{{ media_source(picture, {}, true) }}
+```
+
+#### The `media_has_path` function
+
+The `media_has_path` function indicates whether the resolver can return
+a path for the given media:
+
+```twig
+{{ media_has_path(picture) }}
+```
+
+An hash of options can be passed as second argument:
+
+```twig
+{{ media_has_path(picture, {'foo':'bar'}) }}
+```
+
+#### The `media_path` function
+
+The `media_path` function is responsible of returning a path for the given
+media:
+
+```twig
+{{ media_path(picture) }}
+```
+
+You can also specifiy options as second argument:
+
+```twig
+{{ media_path(picture, {'foo':'bar'}}
+```
+
+### PHP templating integration
+
+The bundle registers an extension for the PHP templating engine. You can
+access it using `$view['media_exposer']` in your templates. It only contains
+proxy methods for the `Exposer` instances:
+
+ - `->getSource($media [, array $options [, $forceAbsolute]])`
+ - `->hasSource($media [, array $options])`
+ - `->getPath($media [, array $options])`
+ - `->hasPath($media [, array $options])`
 
 [media-exposer]: https://github.com/knplabs/MediaExposer "MediaExposer library on github"
 [symfony-standard]: http://github.com/symfony/symfony-standard "Symfony Standard Edition on github"
