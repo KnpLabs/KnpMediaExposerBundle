@@ -101,7 +101,7 @@ After the installation & configuration, the media exposer is almost ready
 for use. But there is still one step: registering your resolvers.
 
 With this bundle, adding a resolver to the exposer is as simple as registering
-a service having the `media\_exposer.resolver` tag.
+a service having the `knp_media_exposer.resolver` tag.
 
 Here is an exemple of resolver service registration in **yml**:
 
