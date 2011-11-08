@@ -1,0 +1,24 @@
+{
+    "name":         "knplabs/knp-media-exposer-bundle",
+    "type":         "symfony-bundle",
+    "description":  "Allows to easily use the media exposer library in a Symfony project",
+    "keywords":     ["media", "image", "file", "path", "source"],
+    "homepage":     "http://knplabs.com",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Antoine Hérault",
+            "email":    "antoine.herault@gmail.com"
+        }
+    ],
+    "require":      {
+        "symfony/framework-bundle": "2.*",
+        "knplabs/media-exposer":    "*"
+    },
+    "autoload":     {
+        "psr-0": {
+            "Knp\\Bundle\\MediaExposerBundle": ""
+        }
+    },
+    "target-dir":   "Knp/Bundle/MediaExposerBundle"
+}
