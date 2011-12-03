@@ -27,10 +27,10 @@ You can add the following lines to your `deps` file:
 
 ```ini
 [media-exposer]
-    git=http://github.com/knplabs/MediaExposer.git
+    git=http://github.com/KnpLabs/MediaExposer.git
 
 [KnpMediaExposerBundle]
-    git=http://github.com/knplabs/KnpMediaExposerBundle.git
+    git=http://github.com/KnpLabs/KnpMediaExposerBundle.git
     target=/bundles/Knp/Bundle/MediaExposerBundle
 ```
 
@@ -46,8 +46,8 @@ You can run the following git commands to add both library and bundle as
 submodules:
 
 ```bash
-git submodule add https://github.com/knplabs/MediaExposer.git vendor/media-exposer
-git submodule add https://github.com/knplabs/KnpMediaExposerBundle.git vendor/bundle/Knp/Bundle/MediaExposerBundle
+git submodule add https://github.com/KnpLabs/MediaExposer.git vendor/media-exposer
+git submodule add https://github.com/KnpLabs/KnpMediaExposerBundle.git vendor/bundle/Knp/Bundle/MediaExposerBundle
 ```
 
 ### Update your autoloader & kernel
@@ -210,5 +210,5 @@ proxy methods for the `Exposer` instances:
  - `->getPath($media [, array $options])`
  - `->hasPath($media [, array $options])`
 
-[media-exposer]: https://github.com/knplabs/MediaExposer "MediaExposer library on github"
+[media-exposer]: https://github.com/KnpLabs/MediaExposer "MediaExposer library on github"
 [symfony-standard]: http://github.com/symfony/symfony-standard "Symfony Standard Edition on github"
