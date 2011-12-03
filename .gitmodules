@@ -3,7 +3,7 @@
 	url = https://github.com/symfony/symfony.git
 [submodule "vendor/media-exposer"]
 	path = vendor/media-exposer
-	url = https://github.com/knplabs/MediaExposer.git
+	url = https://github.com/KnpLabs/MediaExposer.git
 [submodule "vendor/twig"]
 	path = vendor/twig
 	url = https://github.com/fabpot/Twig.git
