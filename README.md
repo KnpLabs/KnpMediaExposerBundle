@@ -212,3 +212,19 @@ proxy methods for the `Exposer` instances:
 
 [media-exposer]: https://github.com/KnpLabs/MediaExposer "MediaExposer library on github"
 [symfony-standard]: http://github.com/symfony/symfony-standard "Symfony Standard Edition on github"
+
+## Maintainers
+
+KNPLabs is looking for maintainers ([see why](https://knplabs.com/en/blog/news-for-our-foss-projects-maintenance)).
+
+If you are interested, feel free to open a PR to ask to be added as a maintainer.
+
+We’ll be glad to hear from you :)
+
+This library is currently unmaintained.
+
+## Credits
+
+KnpMediaExposerBundle has been originally developed by the [KnpLabs](http://knplabs.com) team.
+
+
